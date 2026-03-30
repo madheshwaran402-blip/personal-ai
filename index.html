@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Madheshwaran | Personal AI</title>
+  <title>Madheshwaran | VLSI & Hardware Engineer</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -14,11 +14,11 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
       <a href="#chat">Chat</a>
     </div>
   </nav>
 
-  <!-- MAIN CONTENT -->
   <main class="container">
 
     <!-- PROFILE -->
@@ -29,7 +29,7 @@
       <div class="profile-info">
         <p class="greeting">Hello, I'm</p>
         <h1>Madheshwaran</h1>
-        <p class="tagline">Aspiring Developer · Building My Personal AI</p>
+        <p class="tagline">VLSI Design Student · Hardware Innovator · Neuromorphic Enthusiast</p>
         <div class="links">
           <a href="https://github.com/madheshwaran402-blip" target="_blank">GitHub</a>
           <a href="mailto:madheshwaran402@gmail.com">Email</a>
@@ -41,17 +41,17 @@
     <!-- ABOUT -->
     <section class="section fade-in">
       <h2>About Me</h2>
-      <p>Write 2–3 lines about yourself. Who you are, what you're learning, what drives you.</p>
+      <p>I'm a VLSI Design & Technology engineering student from Tamil Nadu, India, focused on building hardware systems that are reliable, safe, and real-world ready. I lead Determinex — an FPGA-based deterministic data stream processing project. My long-term vision includes neuromorphic hardware, Scopus-indexed research, and safety-critical systems.</p>
     </section>
 
     <!-- EDUCATION -->
     <section class="section fade-in">
       <h2>Education</h2>
       <div class="timeline-item">
-        <span class="year">20XX – 20XX</span>
+        <span class="year">2nd Year</span>
         <div>
-          <h3>Your Degree</h3>
-          <p>Your College Name</p>
+          <h3>B.E. / B.Tech — VLSI Design & Technology</h3>
+          <p>Tamil Nadu, India · Currently progressing toward core specialization</p>
         </div>
       </div>
     </section>
@@ -59,55 +59,151 @@
     <!-- SKILLS -->
     <section class="section fade-in" id="skills">
       <h2>Technical Skills</h2>
+
+      <p class="skills-label">Programming</p>
       <div class="skills-grid">
-        <span class="skill-tag">HTML</span>
-        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Python (Brian2, Nengo)</span>
+        <span class="skill-tag">MATLAB / Simulink</span>
+        <span class="skill-tag">Java + DSA</span>
         <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">GitHub</span>
-        <span class="skill-tag">React (learning)</span>
+        <span class="skill-tag">Node.js</span>
+      </div>
+
+      <p class="skills-label">Hardware & VLSI</p>
+      <div class="skills-grid">
+        <span class="skill-tag">Verilog</span>
+        <span class="skill-tag">SystemVerilog</span>
+        <span class="skill-tag">FPGA Design</span>
+        <span class="skill-tag">Digital Design</span>
+        <span class="skill-tag">FSM / FIFO / Counters</span>
+        <span class="skill-tag">Event-driven Architecture</span>
+      </div>
+
+      <p class="skills-label">Tools & Platforms</p>
+      <div class="skills-grid">
+        <span class="skill-tag">MQTT</span>
+        <span class="skill-tag">Turbotic</span>
+        <span class="skill-tag">Linux (RH104)</span>
+        <span class="skill-tag">Git & GitHub</span>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section class="section fade-in" id="projects">
       <h2>Projects</h2>
+
       <div class="project-card">
         <div class="project-header">
-          <h3>Personal AI Chatbot</h3>
+          <h3>Determinex — Data Stream Reordering Hardware</h3>
+          <span class="status">TRL 1–3</span>
+        </div>
+        <p>FPGA-based system that handles missing, duplicate, and out-of-order data streams with deterministic fault-tolerant architecture. Submitted for Tamil Nadu Innovation / Quantum Challenge.</p>
+        <div class="project-tags">
+          <span>FPGA</span><span>Verilog</span><span>Deterministic Systems</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Smart Shoe Prototype</h3>
+          <span class="status">Patented</span>
+        </div>
+        <p>ESP32-based smart shoe with air-bladder sole — Sport Mode (curved) and Casual Mode (flat), controlled via mobile app. Includes MPU6050, MAX30102 sensors, pump control, and battery management.</p>
+        <div class="project-tags">
+          <span>ESP32</span><span>IoT</span><span>Embedded Systems</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Dual-Mode Smart Water Tank Automation</h3>
+          <span class="status">Completed</span>
+        </div>
+        <p>MQTT-based control system with live hardware mode and simulation demo mode. Built using Node.js and Turbotic automation workflows.</p>
+        <div class="project-tags">
+          <span>MQTT</span><span>Node.js</span><span>Turbotic</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Personal AI Assistant</h3>
           <span class="status">In Progress</span>
         </div>
-        <p>An AI chatbot that knows everything about me. Ask it about my skills, projects, education. Built with React and Claude API.</p>
+        <p>AI system with self-knowledge memory — tracks projects, skills, and learning progress. Currently on a 9-month development roadmap using React and Claude API.</p>
         <div class="project-tags">
-          <span>React</span>
-          <span>Claude API</span>
-          <span>Python</span>
+          <span>React</span><span>Claude API</span><span>Python</span>
         </div>
+      </div>
+
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section fade-in" id="research">
+      <h2>Research Interests</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Neuromorphic Computing</span>
+        <span class="skill-tag">Spiking Neural Networks</span>
+        <span class="skill-tag">Edge AI for Medical Systems</span>
+        <span class="skill-tag">Safety-aware AI</span>
+        <span class="skill-tag">Event-driven Hardware</span>
       </div>
     </section>
 
-    <!-- COURSES -->
+    <!-- ACHIEVEMENTS -->
     <section class="section fade-in">
-      <h2>Courses & Certifications</h2>
-      <ul>
-        <li>Add your real courses here</li>
-        <li>Add certifications here</li>
-      </ul>
+      <h2>Achievements</h2>
+      <div class="project-card achievement-card">
+        <div class="project-header">
+          <h3>🥇 IDEATHON 1.0 Winner</h3>
+          <span class="status">1st Place</span>
+        </div>
+        <p>Won medal + cash prize at PSNA College of Engineering & Technology (IT Dept). Team Determinex. Domain: Industry Innovation & Infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- STARTUP VISION -->
+    <section class="section fade-in">
+      <h2>Startup Vision</h2>
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Determinex</h3>
+          <span class="status">Concept Stage</span>
+        </div>
+        <p>Hardware-first startup focused on data integrity and event-driven systems. Core idea: high-speed reliable data processing with a hardware-first approach.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Safety Watch Platform</h3>
+          <span class="status">Vision</span>
+        </div>
+        <p>Offline wearable-to-wearable alert system. Four products: Hospital Monitoring, Elder Safety, Child Safety, and Couple Safety Watch.</p>
+      </div>
+    </section>
+
+    <!-- CURRENT LEARNING -->
+    <section class="section fade-in">
+      <h2>Currently Learning</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Verilog + SystemVerilog (Advanced)</span>
+        <span class="skill-tag">Java + Data Structures</span>
+        <span class="skill-tag">Linux RH104</span>
+        <span class="skill-tag">FPGA-based Design</span>
+      </div>
     </section>
 
     <!-- CHAT -->
     <section class="section fade-in" id="chat">
       <h2>Chat With Me</h2>
-      <p class="chat-subtitle">Ask anything about Madheshwaran — skills, projects, goals.</p>
+      <p class="chat-subtitle">Ask anything about Madheshwaran — skills, projects, research, goals.</p>
       <div class="chat-container">
         <div class="chat-messages" id="chat-messages">
           <div class="message bot">
-            👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me anything about him!
+            👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me about his projects, skills, research interests, or goals!
           </div>
         </div>
         <div class="chat-input-row">
-          <input type="text" id="user-input" placeholder="e.g. What are your skills?" />
+          <input type="text" id="user-input" placeholder="e.g. What is Determinex?" />
           <button onclick="sendMessage()">Send ↑</button>
         </div>
       </div>
@@ -115,9 +211,8 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <p>Built by Madheshwaran · <a href="https://github.com/madheshwaran402-blip">GitHub</a></p>
+    <p>Built by Madheshwaran Maruthamuthu · Tamil Nadu, India · <a href="mailto:madheshwaran402@gmail.com">madheshwaran402@gmail.com</a></p>
   </footer>
 
   <script src="script.js"></script>
