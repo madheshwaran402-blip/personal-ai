@@ -1,95 +1,125 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Madheshwaran | Personal AI
-        </title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <script src="script.js"></script>
-    <body>
+<html lang="en">
+<head>
+  <title>Madheshwaran | Personal AI</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <!-- HEADER / PROFILE SECTION -->
-  <section class="profile">
-    <div class="profile-photo">
-      <img src="photo.jpg" alt="Madheshwaran">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <span class="nav-logo">M<span class="dot">.</span></span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#chat">Chat</a>
     </div>
-    <div class="profile-info">
-      <h1>Madheshwaran</h1>
-      <p class="tagline">Aspiring Developer · Building My Personal AI</p>
-      <div class="links">
-        <a href="https://github.com/madheshwaran402-blip">GitHub</a>
-        <a href="mailto:madheshwaran402@gmail.com">Email</a>
-        <a href="#">LinkedIn</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- PROFILE -->
+    <section class="profile" id="about">
+      <div class="profile-photo">
+        <img src="photo.jpg" alt="Madheshwaran">
       </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section">
-    <h2>About Me</h2>
-    <p>Write 2–3 lines about yourself here. Who you are, what you're learning, what you're building.</p>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section">
-    <h2>Education</h2>
-    <p>Your Degree — Your College Name</p>
-    <p>Year of graduation</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>HTML & CSS</li>
-      <li>JavaScript</li>
-      <li>Python</li>
-      <li>Git & GitHub</li>
-    </ul>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Personal AI Chatbot</h3>
-      <p>An AI chatbot that knows everything about me. Built with React and Claude API.</p>
-    </div>
-  </section>
-
-  <!-- COURSES -->
-  <section class="section">
-    <h2>Courses & Certifications</h2>
-    <ul>
-      <li>Add your courses here</li>
-    </ul>
-  </section>
-
-  <!-- CHAT SECTION -->
-<section class="section">
-  <h2>Chat With Me</h2>
-  <div class="chat-container">
-
-    <!-- Messages appear here -->
-    <div class="chat-messages" id="chat-messages">
-      <div class="message bot">
-        👋 Hi! I'm Madheshwaran's portfolio assistant.
-        Ask me anything about him!
+      <div class="profile-info">
+        <p class="greeting">Hello, I'm</p>
+        <h1>Madheshwaran</h1>
+        <p class="tagline">Aspiring Developer · Building My Personal AI</p>
+        <div class="links">
+          <a href="https://github.com/madheshwaran402-blip" target="_blank">GitHub</a>
+          <a href="mailto:madheshwaran402@gmail.com">Email</a>
+          <a href="#">LinkedIn</a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Input box -->
-    <div class="chat-input-row">
-      <input
-        type="text"
-        id="user-input"
-        placeholder="Ask me about skills, projects, education..."
-      />
-      <button onclick="sendMessage()">Send</button>
-    </div>
+    <!-- ABOUT -->
+    <section class="section fade-in">
+      <h2>About Me</h2>
+      <p>Write 2–3 lines about yourself. Who you are, what you're learning, what drives you.</p>
+    </section>
 
-  </div>
-</section>
+    <!-- EDUCATION -->
+    <section class="section fade-in">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <span class="year">20XX – 20XX</span>
+        <div>
+          <h3>Your Degree</h3>
+          <p>Your College Name</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section fade-in" id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">React (learning)</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section fade-in" id="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Personal AI Chatbot</h3>
+          <span class="status">In Progress</span>
+        </div>
+        <p>An AI chatbot that knows everything about me. Ask it about my skills, projects, education. Built with React and Claude API.</p>
+        <div class="project-tags">
+          <span>React</span>
+          <span>Claude API</span>
+          <span>Python</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="section fade-in">
+      <h2>Courses & Certifications</h2>
+      <ul>
+        <li>Add your real courses here</li>
+        <li>Add certifications here</li>
+      </ul>
+    </section>
+
+    <!-- CHAT -->
+    <section class="section fade-in" id="chat">
+      <h2>Chat With Me</h2>
+      <p class="chat-subtitle">Ask anything about Madheshwaran — skills, projects, goals.</p>
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <div class="message bot">
+            👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me anything about him!
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="user-input" placeholder="e.g. What are your skills?" />
+          <button onclick="sendMessage()">Send ↑</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Built by Madheshwaran · <a href="https://github.com/madheshwaran402-blip">GitHub</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

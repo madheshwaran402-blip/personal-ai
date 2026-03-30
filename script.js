@@ -87,3 +87,16 @@ document.getElementById("user-input").addEventListener("keypress", function(e) {
     sendMessage()
   }
 })
+
+// FADE IN ANIMATION on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible')
+    }
+  })
+}, { threshold: 0.1 })
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el)
+})
