@@ -53,3 +53,72 @@ ul li::before {
   content: "→ ";
   color: #00ff88;
 }
+
+/* Profile Section */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 0;
+  border-bottom: 1px solid #222;
+  margin-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00ff88;
+}
+
+.profile-info h1 {
+  font-size: 42px;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  color: #888;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+}
+
+.links a {
+  color: #00ff88;
+  text-decoration: none;
+  border: 1px solid #00ff88;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.links a:hover {
+  background-color: #00ff88;
+  color: #0f0f0f;
+}
+
+/* Sections */
+.section {
+  margin-top: 48px;
+}
+
+/* Project Card */
+.project-card {
+  background-color: #1a1a1a;
+  border: 1px solid #222;
+  border-left: 3px solid #00ff88;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.project-card h3 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
