@@ -6,6 +6,7 @@
         </title>
         <link rel="stylesheet" href="style.css">
     </head>
+    <script src="script.js"></script>
     <body>
 
   <!-- HEADER / PROFILE SECTION -->
@@ -63,6 +64,23 @@
     <ul>
       <li>Add your courses here</li>
     </ul>
+  </section>
+
+  <!-- INTERACTIVE SECTION -->
+  <section class="section">
+    <h2>Ask Me Something</h2>
+    <div class="ask-box">
+      <p>Click a button to learn about me:</p>
+      <div class="ask-buttons">
+        <button onclick="showFact('education')">🎓 Education</button>
+        <button onclick="showFact('skills')">💻 Skills</button>
+        <button onclick="showFact('projects')">🚀 Projects</button>
+        <button onclick="showFact('goal')">🎯 My Goal</button>
+      </div>
+      <div class="fact-box" id="fact-box">
+        <p id="fact-text">Click any button above...</p>
+      </div>
+    </div>
   </section>
 
 </body>
