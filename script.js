@@ -135,6 +135,9 @@ document.getElementById("user-input").addEventListener("keypress", function(e) {
   if (e.key === "Enter") sendMessage()
 })
 
+// Call this when page loads
+buildSuggestions()
+
 // Fade in animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -145,5 +148,3 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 })
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el))
-// Call this when page loads
-buildSuggestions()
