@@ -1,3 +1,34 @@
+// SUGGESTED QUESTIONS — array of objects
+const suggestions = [
+  { label: "🔷 What is Determinex?",       question: "What is Determinex?" },
+  { label: "👟 Tell me about your patent",  question: "Tell me about the smart shoe" },
+  { label: "🧠 Research interests?",        question: "What are your research interests?" },
+  { label: "🎯 What are your goals?",       question: "What are your goals?" },
+  { label: "💻 What are your skills?",      question: "What are your skills?" },
+  { label: "🏆 Any achievements?",          question: "What are your achievements?" },
+  { label: "🚀 What projects have you built?", question: "Tell me about your projects" },
+  { label: "📚 What are you learning now?", question: "What are you currently learning?" }
+]
+
+// BUILD SUGGESTION CHIPS using .map()
+function buildSuggestions() {
+  const container = document.getElementById("suggestions")
+
+  // .map() turns each suggestion object into an HTML button string
+  const buttonsHTML = suggestions.map(item => {
+    return `<button class="suggestion-chip" onclick="askSuggestion('${item.question}')">${item.label}</button>`
+  })
+
+  // .join() merges the array of strings into one big string
+  container.innerHTML = buttonsHTML.join("")
+}
+
+// WHEN A CHIP IS CLICKED — fill input and send
+function askSuggestion(question) {
+  const input = document.getElementById("user-input")
+  input.value = question
+  sendMessage()
+}
 // MADHESHWARAN'S PERSONAL KNOWLEDGE BASE
 const knowledge = {
   name: "I'm Madheshwaran Maruthamuthu, a VLSI Design & Technology engineering student from Tamil Nadu, India. I'm focused on hardware-first engineering — building systems that are reliable, safe, and real-world ready.",
@@ -114,3 +145,5 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 })
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el))
+// Call this when page loads
+buildSuggestions()

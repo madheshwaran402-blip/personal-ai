@@ -364,3 +364,30 @@ ul li::before {
   color: #ffd700;
   border-color: rgba(255,215,0,0.2);
 }
+
+/* Suggested Questions */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.suggestion-chip {
+  background: #111;
+  border: 1px solid #222;
+  color: #888;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+.suggestion-chip:hover {
+  border-color: #00ff88;
+  color: #00ff88;
+  background: rgba(0,255,136,0.05);
+}
