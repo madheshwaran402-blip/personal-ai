@@ -1,114 +1,217 @@
-// SUGGESTED QUESTIONS — array of objects
-const suggestions = [
-  { label: "🔷 What is Determinex?",       question: "What is Determinex?" },
-  { label: "👟 Tell me about your patent",  question: "Tell me about the smart shoe" },
-  { label: "🧠 Research interests?",        question: "What are your research interests?" },
-  { label: "🎯 What are your goals?",       question: "What are your goals?" },
-  { label: "💻 What are your skills?",      question: "What are your skills?" },
-  { label: "🏆 Any achievements?",          question: "What are your achievements?" },
-  { label: "🚀 What projects have you built?", question: "Tell me about your projects" },
-  { label: "📚 What are you learning now?", question: "What are you currently learning?" }
-]
+// ============================================
+// MADHESHWARAN'S STRUCTURED KNOWLEDGE BASE
+// This is your AI's brain — properly structured
+// ============================================
 
-// BUILD SUGGESTION CHIPS using .map()
-function buildSuggestions() {
-  const container = document.getElementById("suggestions")
+const profile = {
+  personal: {
+    name: "Madheshwaran Maruthamuthu",
+    email: "madheshwaran402@gmail.com",
+    location: "Tamil Nadu, India",
+    status: "Engineering Student",
+    github: "github.com/madheshwaran402-blip",
+    bio: "VLSI Design student and hardware-focused innovator building FPGA-based deterministic systems and neuromorphic-inspired architectures."
+  },
 
-  // .map() turns each suggestion object into an HTML button string
-  const buttonsHTML = suggestions.map(item => {
-    return `<button class="suggestion-chip" onclick="askSuggestion('${item.question}')">${item.label}</button>`
-  })
+  education: {
+    degree: "B.E. / B.Tech",
+    specialization: "VLSI Design and Technology",
+    year: "2nd Year",
+    location: "Tamil Nadu, India",
+    focus: "Currently progressing toward core VLSI specialization"
+  },
 
-  // .join() merges the array of strings into one big string
-  container.innerHTML = buttonsHTML.join("")
+  skills: {
+    programming: ["Python (Brian2, Nengo)", "MATLAB / Simulink", "Java + DSA", "JavaScript", "Node.js"],
+    hardware: ["Verilog", "SystemVerilog", "FPGA Design", "Digital Design", "FSM / FIFO / Counters", "Event-driven Architecture"],
+    tools: ["MQTT", "Turbotic", "Linux RH104", "Git", "GitHub"]
+  },
+
+  projects: [
+    {
+      name: "Determinex",
+      type: "Hardware",
+      status: "TRL 1-3 Prototype",
+      description: "FPGA-based system that handles missing, duplicate, and out-of-order data streams with deterministic fault-tolerant architecture.",
+      tech: ["FPGA", "Verilog", "Deterministic Systems"],
+      achievement: "Submitted for Tamil Nadu Innovation and Quantum Challenge"
+    },
+    {
+      name: "Smart Shoe Prototype",
+      type: "IoT + Embedded",
+      status: "Patented",
+      description: "ESP32-based shoe with air-bladder sole — Sport Mode (curved) and Casual Mode (flat) via mobile app. Includes MPU6050, MAX30102 sensors, pump control and battery management.",
+      tech: ["ESP32", "IoT", "Embedded Systems", "Mobile App"]
+    },
+    {
+      name: "Smart Water Tank Automation",
+      type: "IoT",
+      status: "Completed",
+      description: "MQTT-based dual-mode control system — live hardware mode and simulation demo mode. Built with Node.js and Turbotic workflows.",
+      tech: ["MQTT", "Node.js", "Turbotic"]
+    },
+    {
+      name: "Personal AI Assistant",
+      type: "AI + Web",
+      status: "In Progress",
+      description: "AI chatbot that knows everything about Madheshwaran. Built over a 9-month roadmap using React and Claude API.",
+      tech: ["React", "Claude API", "Python", "JavaScript"]
+    }
+  ],
+
+  research: {
+    interests: [
+      "Neuromorphic Computing",
+      "Spiking Neural Networks (SNN)",
+      "Edge AI for Medical Systems",
+      "Safety-aware AI Systems",
+      "Event-driven Hardware"
+    ],
+    longTermGoal: "Publish Scopus-indexed research in neuromorphic hardware"
+  },
+
+  goals: {
+    primary: "Core VLSI / Hardware Engineering role",
+    secondary: "Software / Programming role",
+    longTerm: [
+      "Build neuromorphic hardware systems",
+      "Publish Scopus-indexed research",
+      "Develop real-world safety-critical systems"
+    ]
+  },
+
+  achievements: [
+    {
+      title: "IDEATHON 1.0 Winner",
+      organizer: "PSNA College of Engineering and Technology — IT Dept",
+      team: "Determinex",
+      domain: "Industry Innovation & Infrastructure",
+      prize: "Medal + Cash Prize"
+    }
+  ],
+
+  startups: [
+    {
+      name: "Determinex",
+      focus: "Data integrity and event-driven hardware systems",
+      idea: "High-speed reliable data processing with a hardware-first approach"
+    },
+    {
+      name: "Safety Watch Platform",
+      focus: "Offline wearable-to-wearable alert system",
+      products: [
+        "Hospital Monitoring Watch",
+        "Elder Safety Watch",
+        "Child Safety Watch",
+        "Couple Safety Watch"
+      ]
+    }
+  ],
+
+  currentlyLearning: [
+    "Verilog + SystemVerilog (Advanced)",
+    "Java + Data Structures",
+    "Linux RH104",
+    "FPGA-based Design"
+  ],
+
+  personality: [
+    "Hardware-first mindset",
+    "Practical and implementation-focused",
+    "Competition-oriented thinking",
+    "System-level problem solving",
+    "Detail-oriented engineering approach"
+  ]
 }
 
-// WHEN A CHIP IS CLICKED — fill input and send
-function askSuggestion(question) {
-  const input = document.getElementById("user-input")
-  input.value = question
-  sendMessage()
-}
-// MADHESHWARAN'S PERSONAL KNOWLEDGE BASE
-const knowledge = {
-  name: "I'm Madheshwaran Maruthamuthu, a VLSI Design & Technology engineering student from Tamil Nadu, India. I'm focused on hardware-first engineering — building systems that are reliable, safe, and real-world ready.",
-
-  education: "I'm currently a 2nd year B.E./B.Tech student specializing in VLSI Design & Technology in Tamil Nadu, India. I'm progressing toward core VLSI specialization with a strong focus on digital design and FPGA systems.",
-
-  skills: "My hardware skills include Verilog, SystemVerilog, FPGA Design, Digital Design (FSM, FIFO, Counters), and event-driven architectures. On the programming side I work with Python (Brian2, Nengo), MATLAB/Simulink, Java, JavaScript, and Node.js. Tools: MQTT, Turbotic, Linux (RH104), Git.",
-
-  projects: "I have 4 key projects: (1) Determinex — FPGA-based deterministic data stream reordering hardware, submitted for Tamil Nadu Innovation Challenge. (2) Smart Shoe Prototype — patented ESP32-based shoe with air-bladder sole and health sensors. (3) Smart Water Tank Automation — MQTT + Node.js dual-mode control system. (4) Personal AI Assistant — currently building this over 9 months using React and Claude API.",
-
-  determinex: "Determinex is my flagship project — an FPGA-based hardware system that handles missing, duplicate, and out-of-order data streams with deterministic fault-tolerant architecture. It's at TRL 1–3 (prototype stage) and was submitted for the Tamil Nadu Innovation and Quantum Challenge. It's also the name of my startup concept focused on data integrity hardware.",
-
-  smartshoe: "The Smart Shoe Prototype is a patented innovation — an ESP32-based shoe with an air-bladder sole that switches between Sport Mode (curved, air empty) and Casual Mode (flat, air filled) via a mobile app. It includes MPU6050 and MAX30102 sensors, pump control, and battery management.",
-
-  watertank: "The Smart Water Tank Automation uses MQTT protocol with Node.js and Turbotic workflows. It has two modes: live mode connected to real hardware, and simulation mode for demos. It was one of my earlier full-stack hardware-software integration projects.",
-
-  research: "My research interests are in Neuromorphic Computing, Spiking Neural Networks (SNN), Edge AI for medical systems, safety-aware AI systems, and event-driven hardware. My long-term goal is to publish Scopus-indexed research in neuromorphic hardware.",
-
-  goals: "My primary goal is a core VLSI/hardware engineering role. Long-term I want to build neuromorphic hardware systems, publish Scopus-indexed research, and develop safety-critical real-world systems. I also have two startup visions: Determinex (data integrity hardware) and Safety Watch Platform (offline wearable alert system).",
-
-  achievements: "I won IDEATHON 1.0 at PSNA College of Engineering & Technology, organized by the IT Department. My team Determinex competed in the Industry Innovation & Infrastructure domain and won a medal and cash prize.",
-
-  startup: "I have two startup concepts: Determinex — focused on high-speed data integrity and event-driven hardware systems; and Safety Watch Platform — an offline wearable-to-wearable alert system with four products: Hospital Monitoring, Elder Safety, Child Safety, and Couple Safety Watch.",
-
-  contact: "You can reach Madheshwaran at madheshwaran402@gmail.com. His GitHub is github.com/madheshwaran402-blip. He's based in Tamil Nadu, India.",
-
-  learning: "Currently I'm advancing in Verilog and SystemVerilog, learning Java with Data Structures for placements, completing Linux RH104, and deepening FPGA-based design skills.",
-
-  personality: "Madheshwaran is methodical and structured, focused on real-world impact. He prefers low-cost demonstrable solutions, values clarity over hype, and has a strong hardware-first mindset with competition-oriented thinking and system-level problem solving."
-}
+// ============================================
+// ANSWER ENGINE
+// Reads from the structured profile object
+// ============================================
 
 function getAnswer(input) {
   const text = input.toLowerCase()
 
-  if (text.includes("who") || text.includes("introduce") || text.includes("about you") || text.includes("yourself")) {
-    return knowledge.name
+  if (text.includes("who") || text.includes("introduce") || text.includes("about") || text.includes("yourself")) {
+    return `${profile.personal.name} — ${profile.personal.bio} Based in ${profile.personal.location}.`
   }
-  else if (text.includes("education") || text.includes("college") || text.includes("degree") || text.includes("study") || text.includes("student")) {
-    return knowledge.education
+
+  else if (text.includes("education") || text.includes("college") || text.includes("degree") || text.includes("study")) {
+    const edu = profile.education
+    return `${edu.degree} in ${edu.specialization}, currently in ${edu.year} at ${edu.location}. ${edu.focus}.`
   }
-  else if (text.includes("skill") || text.includes("know") || text.includes("tech") || text.includes("language") || text.includes("tool")) {
-    return knowledge.skills
+
+  else if (text.includes("programming") || text.includes("language") || text.includes("code")) {
+    return `Programming skills: ${profile.skills.programming.join(", ")}.`
   }
-  else if (text.includes("determinex") || text.includes("fpga") || text.includes("data stream") || text.includes("reorder")) {
-    return knowledge.determinex
+
+  else if (text.includes("hardware") || text.includes("vlsi") || text.includes("fpga") || text.includes("verilog")) {
+    return `Hardware & VLSI skills: ${profile.skills.hardware.join(", ")}.`
   }
-  else if (text.includes("shoe") || text.includes("smart shoe") || text.includes("patent") || text.includes("esp32")) {
-    return knowledge.smartshoe
+
+  else if (text.includes("skill") || text.includes("tech") || text.includes("know")) {
+    const s = profile.skills
+    return `Programming: ${s.programming.join(", ")}. Hardware: ${s.hardware.join(", ")}. Tools: ${s.tools.join(", ")}.`
   }
+
+  else if (text.includes("determinex") || text.includes("data stream") || text.includes("reorder")) {
+    const p = profile.projects[0]
+    return `${p.name} (${p.status}): ${p.description} ${p.achievement}.`
+  }
+
+  else if (text.includes("shoe") || text.includes("patent") || text.includes("esp32")) {
+    const p = profile.projects[1]
+    return `${p.name} (${p.status}): ${p.description}`
+  }
+
   else if (text.includes("water") || text.includes("tank") || text.includes("mqtt")) {
-    return knowledge.watertank
+    const p = profile.projects[2]
+    return `${p.name} (${p.status}): ${p.description}`
   }
-  else if (text.includes("project") || text.includes("built") || text.includes("made") || text.includes("work")) {
-    return knowledge.projects
+
+  else if (text.includes("project") || text.includes("built") || text.includes("made")) {
+    const names = profile.projects.map(p => `${p.name} (${p.status})`)
+    return `Key projects: ${names.join(", ")}. Ask me about any specific one for details!`
   }
-  else if (text.includes("research") || text.includes("neuromorphic") || text.includes("spiking") || text.includes("snn")) {
-    return knowledge.research
+
+  else if (text.includes("research") || text.includes("neuromorphic") || text.includes("snn") || text.includes("spiking")) {
+    return `Research interests: ${profile.research.interests.join(", ")}. Long-term goal: ${profile.research.longTermGoal}.`
   }
-  else if (text.includes("goal") || text.includes("future") || text.includes("plan") || text.includes("vision") || text.includes("dream")) {
-    return knowledge.goals
+
+  else if (text.includes("goal") || text.includes("future") || text.includes("plan") || text.includes("dream")) {
+    return `Primary goal: ${profile.goals.primary}. Long-term: ${profile.goals.longTerm.join(", ")}.`
   }
-  else if (text.includes("win") || text.includes("award") || text.includes("achievement") || text.includes("ideathon")) {
-    return knowledge.achievements
+
+  else if (text.includes("achievement") || text.includes("win") || text.includes("award") || text.includes("ideathon")) {
+    const a = profile.achievements[0]
+    return `${a.title} — Team ${a.team} at ${a.organizer}. Domain: ${a.domain}. Prize: ${a.prize}.`
   }
-  else if (text.includes("startup") || text.includes("company") || text.includes("safety watch") || text.includes("business")) {
-    return knowledge.startup
+
+  else if (text.includes("startup") || text.includes("company") || text.includes("safety watch")) {
+    const names = profile.startups.map(s => `${s.name}: ${s.focus}`)
+    return `Startup visions — ${names.join(". ")}.`
   }
+
+  else if (text.includes("learning") || text.includes("currently")) {
+    return `Currently learning: ${profile.currentlyLearning.join(", ")}.`
+  }
+
   else if (text.includes("contact") || text.includes("email") || text.includes("reach") || text.includes("github")) {
-    return knowledge.contact
+    return `Email: ${profile.personal.email} | GitHub: ${profile.personal.github} | Location: ${profile.personal.location}`
   }
-  else if (text.includes("learning") || text.includes("currently") || text.includes("studying now")) {
-    return knowledge.learning
+
+  else if (text.includes("strength") || text.includes("personality") || text.includes("trait")) {
+    return `Key strengths: ${profile.personality.join(", ")}.`
   }
-  else if (text.includes("personality") || text.includes("strength") || text.includes("trait") || text.includes("character")) {
-    return knowledge.personality
-  }
+
   else {
-    return "I can answer questions about Madheshwaran's skills, projects (Determinex, Smart Shoe, Water Tank), research interests, education, achievements, startup vision, or goals. Try asking something specific!"
+    return "Try asking about skills, projects (Determinex, Smart Shoe, Water Tank), research, education, goals, achievements, or startups!"
   }
 }
+
+// ============================================
+// CHAT FUNCTIONS
+// ============================================
 
 function addMessage(text, sender) {
   const messages = document.getElementById("chat-messages")
@@ -126,24 +229,53 @@ function sendMessage() {
   addMessage(userText, "user")
   input.value = ""
   const answer = getAnswer(userText)
-  setTimeout(() => {
-    addMessage(answer, "bot")
-  }, 500)
+  setTimeout(() => addMessage(answer, "bot"), 500)
 }
 
 document.getElementById("user-input").addEventListener("keypress", function(e) {
   if (e.key === "Enter") sendMessage()
 })
 
-// Call this when page loads
+// ============================================
+// SUGGESTED QUESTIONS
+// ============================================
+
+const suggestions = [
+  { label: "🔷 What is Determinex?",          question: "What is Determinex?" },
+  { label: "👟 Tell me about your patent",     question: "Tell me about the smart shoe" },
+  { label: "🧠 Research interests?",           question: "What are your research interests?" },
+  { label: "🎯 What are your goals?",          question: "What are your goals?" },
+  { label: "💻 What are your skills?",         question: "What are your skills?" },
+  { label: "🏆 Any achievements?",             question: "What are your achievements?" },
+  { label: "🚀 What projects have you built?", question: "Tell me about your projects" },
+  { label: "📚 What are you learning now?",    question: "What are you currently learning?" },
+  { label: "🏢 Startup vision?",              question: "Tell me about your startups" },
+  { label: "📬 How to contact you?",           question: "How can I contact you?" }
+]
+
+function buildSuggestions() {
+  const container = document.getElementById("suggestions")
+  const buttonsHTML = suggestions.map(item =>
+    `<button class="suggestion-chip" onclick="askSuggestion('${item.question}')">${item.label}</button>`
+  )
+  container.innerHTML = buttonsHTML.join("")
+}
+
+function askSuggestion(question) {
+  const input = document.getElementById("user-input")
+  input.value = question
+  sendMessage()
+}
+
+// ============================================
+// PAGE LOAD
+// ============================================
+
 buildSuggestions()
 
-// Fade in animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible')
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible')
   })
 }, { threshold: 0.1 })
 
