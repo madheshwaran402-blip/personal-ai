@@ -669,3 +669,121 @@ ul li::before {
   background: #00ff88;
   color: #0a0a0a;
 }
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #111;
+  border: 1px solid #222;
+  border-top: 3px solid #00ff88;
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.modal h3 {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.modal input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.modal input:focus {
+  border-color: #00ff88;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  background: #00ff88;
+  color: #0a0a0a;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+
+.modal-buttons button:hover {
+  background: #00cc6a;
+}
+
+.skip-btn {
+  background: transparent !important;
+  color: #555 !important;
+  border: 1px solid #333 !important;
+}
+
+.skip-btn:hover {
+  border-color: #555 !important;
+  color: #888 !important;
+  background: transparent !important;
+}
+
+/* Visit Badge */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.visit-badge {
+  display: none;
+  font-size: 11px;
+  color: #00ff88;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.2);
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-family: 'Space Mono', monospace;
+}
+
+/* History Divider */
+.history-divider {
+  text-align: center;
+  font-size: 11px;
+  color: #333;
+  padding: 8px 0;
+  font-family: 'Space Mono', monospace;
+}

@@ -7,9 +7,30 @@
 </head>
 <body>
 
+  <!-- WELCOME MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3>Welcome to Madheshwaran's Portfolio</h3>
+    <p>What's your name? I'll remember you next time.</p>
+    <input 
+      type="text" 
+      id="visitor-name-input" 
+      placeholder="Your name..."
+      maxlength="30"
+    />
+    <div class="modal-buttons">
+      <button onclick="saveVisitorName()">Let's Go →</button>
+      <button class="skip-btn" onclick="skipName()">Skip</button>
+    </div>
+  </div>
+</div>
+
   <!-- NAVBAR -->
   <nav class="navbar">
-    <span class="nav-logo">M<span class="dot">.</span></span>
+   <div class="nav-left">
+  <span class="nav-logo">Madheshwaran<span class="dot">.</span></span>
+  <span class="visit-badge" id="visit-badge"></span>
+</div>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -229,9 +250,9 @@
     <!-- MESSAGES -->
     <div class="chat-messages" id="chat-messages">
       <div class="message bot">
-        <span class="message-text">👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me about his projects, skills, research interests, or goals!</span>
-        <span class="message-time" id="init-time"></span>
-      </div>
+  <span class="message-text" id="welcome-message">👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me about his projects, skills, research interests, or goals!</span>
+  <span class="message-time" id="init-time"></span>
+</div>
     </div>
 
     <!-- INPUT -->
