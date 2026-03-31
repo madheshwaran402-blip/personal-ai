@@ -194,23 +194,40 @@
 
    
     <!-- CHAT -->
-    <section class="section fade-in" id="chat">
-      <h2>Chat With Me</h2>
-      <p class="chat-subtitle">Ask anything about Madheshwaran — skills, projects, research, goals.</p>
-       <!-- SUGGESTED QUESTIONS -->
-<div class="suggestions" id="suggestions"></div>
-      <div class="chat-container">
-        <div class="chat-messages" id="chat-messages">
-          <div class="message bot">
-            👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me about his projects, skills, research interests, or goals!
-          </div>
-        </div>
-        <div class="chat-input-row">
-          <input type="text" id="user-input" placeholder="e.g. What is Determinex?" />
-          <button onclick="sendMessage()">Send ↑</button>
-        </div>
+<section class="section fade-in" id="chat">
+  <h2>Chat With Me</h2>
+  <p class="chat-subtitle">Ask anything about Madheshwaran — skills, projects, research, goals.</p>
+
+  <!-- SUGGESTED QUESTIONS -->
+  <div class="suggestions" id="suggestions"></div>
+
+  <div class="chat-container">
+
+    <!-- CHAT HEADER -->
+    <div class="chat-header">
+      <div class="chat-status">
+        <span class="status-dot"></span>
+        <span>Madheshwaran's AI · Online</span>
       </div>
-    </section>
+      <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="chat-messages" id="chat-messages">
+      <div class="message bot">
+        <span class="message-text">👋 Hi! I'm Madheshwaran's portfolio assistant. Ask me about his projects, skills, research interests, or goals!</span>
+        <span class="message-time" id="init-time"></span>
+      </div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="chat-input-row">
+      <input type="text" id="user-input" placeholder="e.g. What is Determinex?" />
+      <button onclick="sendMessage()">Send ↑</button>
+    </div>
+
+  </div>
+</section>
 
   </main>
 

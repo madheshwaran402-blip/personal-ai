@@ -210,31 +210,109 @@ function getAnswer(input) {
 }
 
 // ============================================
-// CHAT FUNCTIONS
+// HELPER — Get current time as HH:MM
 // ============================================
+function getTime() {
+  const now = new Date()
+  const h = now.getHours().toString().padStart(2, "0")
+  const m = now.getMinutes().toString().padStart(2, "0")
+  return `${h}:${m}`
+}
 
+// ============================================
+// ADD MESSAGE to chat
+// ============================================
 function addMessage(text, sender) {
   const messages = document.getElementById("chat-messages")
+
+  // Create message wrapper
   const div = document.createElement("div")
   div.classList.add("message", sender)
-  div.textContent = text
+
+  // Create text span
+  const textSpan = document.createElement("span")
+  textSpan.classList.add("message-text")
+  textSpan.textContent = text
+
+  // Create time span
+  const timeSpan = document.createElement("span")
+  timeSpan.classList.add("message-time")
+  timeSpan.textContent = getTime()
+
+  // Put them together
+  div.appendChild(textSpan)
+  div.appendChild(timeSpan)
+
   messages.appendChild(div)
   messages.scrollTop = messages.scrollHeight
 }
 
+// ============================================
+// TYPING INDICATOR
+// ============================================
+function showTyping() {
+  const messages = document.getElementById("chat-messages")
+
+  const div = document.createElement("div")
+  div.classList.add("message", "bot", "typing-indicator")
+  div.id = "typing"
+  div.innerHTML = `
+    <span class="message-text">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </span>
+  `
+  messages.appendChild(div)
+  messages.scrollTop = messages.scrollHeight
+}
+
+function hideTyping() {
+  const typing = document.getElementById("typing")
+  if (typing) typing.remove()
+}
+
+// ============================================
+// CLEAR CHAT
+// ============================================
+function clearChat() {
+  const messages = document.getElementById("chat-messages")
+
+  // Remove all messages
+  messages.innerHTML = ""
+
+  // Add the welcome message back
+  const div = document.createElement("div")
+  div.classList.add("message", "bot")
+  div.innerHTML = `
+    <span class="message-text">👋 Chat cleared! Ask me anything about Madheshwaran.</span>
+    <span class="message-time">${getTime()}</span>
+  `
+  messages.appendChild(div)
+}
+
+// ============================================
+// SEND MESSAGE — updated with typing indicator
+// ============================================
 function sendMessage() {
   const input = document.getElementById("user-input")
   const userText = input.value.trim()
   if (userText === "") return
+
+  // Show user message
   addMessage(userText, "user")
   input.value = ""
-  const answer = getAnswer(userText)
-  setTimeout(() => addMessage(answer, "bot"), 500)
-}
 
-document.getElementById("user-input").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") sendMessage()
-})
+  // Show typing indicator
+  showTyping()
+
+  // Hide typing + show answer after delay
+  setTimeout(() => {
+    hideTyping()
+    const answer = getAnswer(userText)
+    addMessage(answer, "bot")
+  }, 1000)
+}
 
 // ============================================
 // SUGGESTED QUESTIONS
@@ -272,6 +350,7 @@ function askSuggestion(question) {
 // ============================================
 
 buildSuggestions()
+document.getElementById("init-time").textContent = getTime()
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
