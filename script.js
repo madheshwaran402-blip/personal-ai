@@ -132,47 +132,37 @@ async function fetchGitHubData() {
   const username = "madheshwaran402-blip"
 
   try {
-    // FETCH 1 — get profile info
-    const profileRes = await fetch(`https://api.github.com/users/${username}`)
-    const githubData = await profileRes.json()
+    // Run BOTH fetches at same time — faster than one by one
+    const [profileRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
+    ])
 
-    // FETCH 2 — get repositories
-    const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
-    const repos = await reposRes.json()
+    // Check if responses are ok
+    if (!profileRes.ok || !reposRes.ok) {
+      throw new Error("GitHub API returned an error")
+    }
 
-    // Display profile
+    // Parse both at same time
+    const [githubData, repos] = await Promise.all([
+      profileRes.json(),
+      reposRes.json()
+    ])
+
     displayGitHubProfile(githubData)
-
-    // Display repos
     displayRepos(repos)
 
   } catch (error) {
-    // Handle error gracefully
-    document.getElementById("github-loading").innerHTML =
-      `<p style="color:#ff4444">Could not load GitHub data. Check your connection.</p>`
+    document.getElementById("github-profile").innerHTML = `
+      <div class="error-state">
+        <p>⚠️ Could not load GitHub data.</p>
+        <a href="https://github.com/madheshwaran402-blip" target="_blank">
+          View GitHub directly ↗️
+        </a>
+      </div>
+    `
   }
 }
-
-function displayGitHubProfile(data) {
-  const container = document.getElementById("github-profile")
-
-  container.innerHTML = `
-    <div class="gh-profile-card">
-      <img src="${data.avatar_url}" alt="GitHub Avatar" class="gh-avatar" />
-      <div class="gh-info">
-        <h3>${data.name || data.login}</h3>
-        <p>${data.bio || "VLSI Design Student & Hardware Innovator"}</p>
-        <div class="gh-stats">
-          <span>📁 ${data.public_repos} Repos</span>
-          <span>👥 ${data.followers} Followers</span>
-          <span>📍 ${data.location || "Tamil Nadu, India"}</span>
-        </div>
-        <a href="${data.html_url}" target="_blank" class="gh-link">View GitHub Profile ↗️</a>
-      </div>
-    </div>
-  `
-}
-
 function displayRepos(repos) {
   const container = document.getElementById("repo-grid")
 
@@ -301,29 +291,50 @@ function getTime() {
 // ============================================
 // ADD MESSAGE to chat
 // ============================================
-function addMessage(text, sender) {
+function addMessage(text, sender, animate = false) {
   const messages = document.getElementById("chat-messages")
 
-  // Create message wrapper
   const div = document.createElement("div")
   div.classList.add("message", sender)
 
-  // Create text span
   const textSpan = document.createElement("span")
   textSpan.classList.add("message-text")
-  textSpan.textContent = text
 
-  // Create time span
   const timeSpan = document.createElement("span")
   timeSpan.classList.add("message-time")
   timeSpan.textContent = getTime()
 
-  // Put them together
   div.appendChild(textSpan)
   div.appendChild(timeSpan)
-
   messages.appendChild(div)
   messages.scrollTop = messages.scrollHeight
+
+  // If bot message — type it out letter by letter
+  if (animate && sender === "bot") {
+    typeWriter(textSpan, text, messages)
+  } else {
+    textSpan.textContent = text
+  }
+}
+
+// TYPEWRITER EFFECT
+function typeWriter(element, text, scrollContainer) {
+  let index = 0
+  element.textContent = ""
+
+  const interval = setInterval(() => {
+    // Add one letter at a time
+    element.textContent += text[index]
+    index++
+
+    // Auto scroll as text grows
+    scrollContainer.scrollTop = scrollContainer.scrollHeight
+
+    // Stop when all letters are done
+    if (index >= text.length) {
+      clearInterval(interval)
+    }
+  }, 18) // 18ms per letter — adjust to make faster or slower
 }
 
 // ============================================
@@ -378,18 +389,31 @@ function sendMessage() {
   const userText = input.value.trim()
   if (userText === "") return
 
-  // Show user message
-  addMessage(userText, "user")
+  // User message — no animation
+  addMessage(userText, "user", false)
   input.value = ""
 
-  // Show typing indicator
+  // Disable input while bot is replying
+  input.disabled = true
+  document.querySelector(".chat-input-row button").disabled = true
+
   showTyping()
 
-  // Hide typing + show answer after delay
   setTimeout(() => {
     hideTyping()
     const answer = getAnswer(userText)
-    addMessage(answer, "bot")
+
+    // Bot message — WITH typewriter animation
+    addMessage(answer, "bot", true)
+
+    // Re-enable input after animation finishes
+    const enableDelay = answer.length * 18 + 100
+    setTimeout(() => {
+      input.disabled = false
+      document.querySelector(".chat-input-row button").disabled = false
+      input.focus()
+    }, enableDelay)
+
   }, 1000)
 }
 
@@ -430,7 +454,52 @@ function askSuggestion(question) {
 
 buildSuggestions()
 document.getElementById("init-time").textContent = getTime()
-fetchGitHubData()
+// Static GitHub display — live API moves to backend in Month 3
+document.getElementById("github-loading").style.display = "none"
+
+document.getElementById("github-profile").innerHTML = `
+  <div class="gh-profile-card">
+    <img src="https://avatars.githubusercontent.com/u/madheshwaran402-blip" 
+         onerror="this.src='photo.jpg'"
+         alt="GitHub Avatar" class="gh-avatar" />
+    <div class="gh-info">
+      <h3>Madheshwaran Maruthamuthu</h3>
+      <p>VLSI Design Student & Hardware Innovator · Tamil Nadu, India</p>
+      <div class="gh-stats">
+        <span>📁 Active Repos</span>
+        <span>📍 Tamil Nadu, India</span>
+        <span>🔗 github.com/madheshwaran402-blip</span>
+      </div>
+      <a href="https://github.com/madheshwaran402-blip" 
+         target="_blank" class="gh-link">View GitHub Profile ↗️</a>
+    </div>
+  </div>
+`
+
+document.getElementById("repo-grid").innerHTML = `
+  <div class="repo-card">
+    <div class="repo-header">
+      <h4>personal-ai</h4>
+      <span class="repo-language">JavaScript</span>
+    </div>
+    <p>Personal AI chatbot that knows everything about Madheshwaran. Built over a 9-month roadmap.</p>
+    <div class="repo-footer">
+      <span>⭐ 0</span>
+      <a href="https://github.com/madheshwaran402-blip/personal-ai" target="_blank">View ↗️</a>
+    </div>
+  </div>
+  <div class="repo-card">
+    <div class="repo-header">
+      <h4>Determinex</h4>
+      <span class="repo-language">Verilog</span>
+    </div>
+    <p>FPGA-based deterministic data stream reordering hardware system.</p>
+    <div class="repo-footer">
+      <span>⭐ 0</span>
+      <a href="https://github.com/madheshwaran402-blip" target="_blank">View ↗️</a>
+    </div>
+  </div>
+`
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

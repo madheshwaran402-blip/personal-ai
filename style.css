@@ -627,3 +627,45 @@ ul li::before {
 
 .loading-dot:nth-child(2) { animation-delay: 0.2s; }
 .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* Disabled input state */
+.chat-input-row input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-input-row button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #555;
+}
+
+/* Error state */
+.error-state {
+  padding: 20px;
+  background: #111;
+  border: 1px solid #2a1a1a;
+  border-left: 3px solid #ff4444;
+  border-radius: 8px;
+}
+
+.error-state p {
+  color: #ff4444;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.error-state a {
+  color: #00ff88;
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid #00ff88;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.error-state a:hover {
+  background: #00ff88;
+  color: #0a0a0a;
+}
