@@ -125,6 +125,85 @@ const profile = {
 }
 
 // ============================================
+// GITHUB API — fetch real live data
+// ============================================
+
+async function fetchGitHubData() {
+  const username = "madheshwaran402-blip"
+
+  try {
+    // FETCH 1 — get profile info
+    const profileRes = await fetch(`https://api.github.com/users/${username}`)
+    const githubData = await profileRes.json()
+
+    // FETCH 2 — get repositories
+    const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
+    const repos = await reposRes.json()
+
+    // Display profile
+    displayGitHubProfile(githubData)
+
+    // Display repos
+    displayRepos(repos)
+
+  } catch (error) {
+    // Handle error gracefully
+    document.getElementById("github-loading").innerHTML =
+      `<p style="color:#ff4444">Could not load GitHub data. Check your connection.</p>`
+  }
+}
+
+function displayGitHubProfile(data) {
+  const container = document.getElementById("github-profile")
+
+  container.innerHTML = `
+    <div class="gh-profile-card">
+      <img src="${data.avatar_url}" alt="GitHub Avatar" class="gh-avatar" />
+      <div class="gh-info">
+        <h3>${data.name || data.login}</h3>
+        <p>${data.bio || "VLSI Design Student & Hardware Innovator"}</p>
+        <div class="gh-stats">
+          <span>📁 ${data.public_repos} Repos</span>
+          <span>👥 ${data.followers} Followers</span>
+          <span>📍 ${data.location || "Tamil Nadu, India"}</span>
+        </div>
+        <a href="${data.html_url}" target="_blank" class="gh-link">View GitHub Profile ↗️</a>
+      </div>
+    </div>
+  `
+}
+
+function displayRepos(repos) {
+  const container = document.getElementById("repo-grid")
+
+  // Filter out forked repos, show only original ones
+  const originalRepos = repos.filter(repo => !repo.fork)
+
+  if (originalRepos.length === 0) {
+    container.innerHTML = `<p style="color:#555">No public repositories yet.</p>`
+    return
+  }
+
+  // Map each repo to a card
+  const repoCards = originalRepos.map(repo => `
+    <div class="repo-card">
+      <div class="repo-header">
+        <h4>${repo.name}</h4>
+        <span class="repo-language">${repo.language || "—"}</span>
+      </div>
+      <p>${repo.description || "No description added yet."}</p>
+      <div class="repo-footer">
+        <span>⭐ ${repo.stargazers_count}</span>
+        <span>🍴 ${repo.forks_count}</span>
+        <a href="${repo.html_url}" target="_blank">View ↗️</a>
+      </div>
+    </div>
+  `)
+
+  container.innerHTML = repoCards.join("")
+}
+
+// ============================================
 // ANSWER ENGINE
 // Reads from the structured profile object
 // ============================================
@@ -351,6 +430,7 @@ function askSuggestion(question) {
 
 buildSuggestions()
 document.getElementById("init-time").textContent = getTime()
+fetchGitHubData()
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
